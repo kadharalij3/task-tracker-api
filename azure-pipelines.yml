@@ -28,5 +28,15 @@ steps:
     replaceExistingArchive: true
   displayName: 'Archive app files'
 
+- task: AzureRmWebAppDeployment@5
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(1)(ad8f925e-d2a1-4d4a-bb51-3421875c3089)'
+    appType: 'webAppLinux'
+    WebAppName: 'test-app11'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|22-lts'
+    DeploymentTypeLinux: 'oneDeploy'
+  displayName: 'Deploy to Azure App Service'
   
 
