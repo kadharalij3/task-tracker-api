@@ -15,7 +15,7 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    npm test
+    npx jest
   displayName: 'Run tests'
 
 - task: ArchiveFiles@2
