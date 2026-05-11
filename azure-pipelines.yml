@@ -22,7 +22,7 @@ steps:
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: false
-    archiveType: 'zip'
+    archiveType: 'tar'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
   displayName: 'Archive app files'
