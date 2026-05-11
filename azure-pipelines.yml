@@ -11,18 +11,18 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm ci
-  displayName: 'npm dependencies'
+    npm install
+  displayName: 'Install dependencies'
 
 - script: |
     npm test
-  displayName: 'Run test'
+  displayName: 'Run tests'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
     includeRootFolder: false
-    archiveType: 'tar'
+    archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
   displayName: 'Archive app files'
@@ -33,9 +33,7 @@ steps:
     azureSubscription: 'Azure subscription 1(1)(ad8f925e-d2a1-4d4a-bb51-3421875c3089)'
     appType: 'webAppLinux'
     WebAppName: 'test-app11'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|22-lts'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    RuntimeStack: 'NODE|20-lts'
     DeploymentTypeLinux: 'oneDeploy'
   displayName: 'Deploy to Azure App Service'
-  
-
