@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: NodeTool@0
+- task: UseNodeV1
   inputs:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
